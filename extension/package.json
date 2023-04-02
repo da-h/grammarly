@@ -79,6 +79,12 @@
           "scope": "window",
           "order": 2
         },
+        "grammarly.login.RedirectURI": {
+          "description": "The redirect URI to use for the OAuth login. To use the internal redirect URI, use `code-oss://znck.grammarly/auth/callback`.",
+          "type": "string",
+          "default": "https://vscode-extension-grammarly.netlify.app/.netlify/functions/redirect",
+          "scope": "window"
+        },
         "grammarly.selectors": {
           "type": "array",
           "description": "Filter documents to be checked with Grammarly.",
