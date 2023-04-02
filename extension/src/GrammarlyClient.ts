@@ -68,7 +68,7 @@ export class GrammarlyClient implements Registerable {
         ? this.context.asAbsolutePath(`dist/server/index.node.js`)
         : Uri.joinPath(this.context.extensionUri, `dist/server/index.browser.js`).toString(),
       {
-        id: 'client_BaDkMgx4X19X9UxxYRCXZo',
+        id: 'client_TMXjvFUxzCTFibmv5BFu6m',
         name: 'Grammarly',
         outputChannel: window.createOutputChannel('Grammarly'),
         documentSelector: this.selectors
