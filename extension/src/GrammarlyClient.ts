@@ -192,11 +192,13 @@ export class GrammarlyClient implements Registerable {
         const externalRedirectUri = await env.asExternalUri(internalRedirectUri)
 
         const isExternalURLDifferent = internalRedirectUri.toString(true) === externalRedirectUri.toString(true)
-        const redirectUri = isExternalURLDifferent
-          ? internalRedirectUri.toString(true)
-          : 'https://vscode-extension-grammarly.netlify.app/.netlify/functions/redirect'
+        // const redirectUri = isExternalURLDifferent
+        //   ? internalRedirectUri.toString(true)
+        //   : 'https://vscode-extension-grammarly.netlify.app/.netlify/functions/redirect'
+        const redirectUri = internalRedirectUri.toString(true)
         const url = new URL(await this.client.protocol.getOAuthUrl(redirectUri))
-        url.searchParams.set('state', toBase64URL(externalRedirectUri.toString(true)))
+        // url.searchParams.set('state', toBase64URL(externalRedirectUri.toString(true)))
+        url.searchParams.set('state', toBase64URL(internalRedirectUri.toString(true)))
 
         if (!(await env.openExternal(Uri.parse(url.toString(), true)))) {
           await window.showErrorMessage('Failed to open login page.')
