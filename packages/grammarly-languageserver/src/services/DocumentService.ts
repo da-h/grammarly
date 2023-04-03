@@ -39,7 +39,40 @@ export class DocumentService implements Registerable {
     this.#documents = createTextDocuments({
       create(uri, languageId, version, content) {
         const document = new GrammarlyDocument(TextDocument.create(uri, languageId, version, content), async () => {
-          const options = await config.getDocumentSettings(uri)
+          var options = await config.getDocumentSettings(uri)
+          options.documentDomain = 'academic'
+          options.suggestions = {
+            ConjunctionAtStartOfSentence: true,
+            Fluency: true,
+            InformalPronounsAcademic: true,
+            MissingSpaces: true,
+            NounStrings: true,
+            NumbersBeginningSentences: true,
+            NumbersZeroThroughTen: true,
+            OxfordComma: true,
+            PassiveVoice: true,
+            PersonFirstLanguage: true,
+            PossiblyBiasedLanguageAgeRelated: true,
+            PossiblyBiasedLanguageDisabilityRelated: true,
+            PossiblyBiasedLanguageFamilyRelated: true,
+            PossiblyBiasedLanguageGenderRelated: true,
+            PossiblyBiasedLanguageHumanRights: true,
+            PossiblyBiasedLanguageHumanRightsRelated: true,
+            PossiblyBiasedLanguageLgbtqiaRelated: true,
+            PossiblyBiasedLanguageRaceEthnicityRelated: true,
+            PossiblyPoliticallyIncorrectLanguage: true,
+            PrepositionAtTheEndOfSentence: true,
+            PunctuationWithQuotation: true,
+            ReadabilityFillerwords: true,
+            ReadabilityTransforms: true,
+            SentenceVariety: true,
+            SpacesSurroundingSlash: true,
+            SplitInfinitive: true,
+            StylisticFragments: true,
+            UnnecessaryEllipses: true,
+            Variety: true,
+            Vocabulary: true,
+          }
           connection.console.log(`create text checking session for "${uri}" with ${JSON.stringify(options, null, 2)} `)
           return sdk.withText(
             { ops: [] },
